@@ -1,6 +1,6 @@
 import Foundation
 
-@available(iOS 13, watchOS 6, *)
+@available(iOS 13, watchOS 8, *)
 public enum MihoyoAPI {
     /// 获取信息
     /// - Parameters:
