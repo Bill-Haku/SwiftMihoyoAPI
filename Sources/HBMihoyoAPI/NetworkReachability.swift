@@ -53,7 +53,8 @@ import Foundation
         }
     }
 #else
-    class NetworkReachability: ObservableObject {
+@available(watchOS 6.0, *)
+class NetworkReachability: ObservableObject {
         @Published
         private(set) var reachable: Bool = true
     }

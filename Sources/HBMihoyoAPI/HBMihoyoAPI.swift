@@ -1,6 +1,6 @@
 import Foundation
 
-@available(iOS 13, *)
+@available(iOS 13, watchOS 6, *)
 public class MihoyoAPI {
     /// 获取信息
     /// - Parameters:

@@ -17,7 +17,7 @@ enum Method {
 
 // MARK: - HttpMethod
 
-@available (iOS 13, *)
+@available (iOS 13, watchOS 6, *)
 struct HttpMethod<T: Codable> {
     /// 综合的http 各种方法接口
     /// - Parameters:

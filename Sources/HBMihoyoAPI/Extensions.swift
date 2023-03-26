@@ -16,7 +16,7 @@ extension String {
 }
 
 extension String {
-    @available(iOS 15, *)
+    @available(iOS 15, watchOS 8, *)
     public func toAttributedString() -> AttributedString {
         let attributedString = try? AttributedString(markdown: self)
         return attributedString ?? ""
