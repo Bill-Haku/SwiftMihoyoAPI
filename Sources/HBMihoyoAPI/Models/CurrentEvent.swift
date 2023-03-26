@@ -9,10 +9,10 @@ import Foundation
 
 // MARK: - CurrentEvent
 
-struct CurrentEvent: Codable {
+public struct CurrentEvent: Codable {
     // MARK: Lifecycle
 
-    init(from decoder: Decoder) throws {
+    public init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: EventKey.self)
 
         var events = [String: EventModel]()
@@ -26,43 +26,43 @@ struct CurrentEvent: Codable {
 
     // MARK: Internal
 
-    struct EventKey: CodingKey {
+    public struct EventKey: CodingKey {
         // MARK: Lifecycle
 
-        init?(stringValue: String) {
+        public init?(stringValue: String) {
             self.stringValue = stringValue
         }
 
-        init?(intValue: Int) {
+        public init?(intValue: Int) {
             self.stringValue = "\(intValue)"
             self.intValue = intValue
         }
 
         // MARK: Internal
 
-        var stringValue: String
-        var intValue: Int?
+        public var stringValue: String
+        public var intValue: Int?
     }
 
-    var event: [String: EventModel]
+    public var event: [String: EventModel]
 }
 
 // MARK: - EventModel
 
-struct EventModel: Codable {
-    struct MultiLanguageContents: Codable {
-        var EN: String
-        var RU: String
-        var CHS: String
-        var CHT: String
-        var KR: String
-        var JP: String
+public struct EventModel: Codable {
+    public struct MultiLanguageContents: Codable {
+        public var EN: String
+        public var RU: String
+        public var CHS: String
+        public var CHT: String
+        public var KR: String
+        public var JP: String
     }
 
-    var id: Int
-    var name: MultiLanguageContents
-    var nameFull: MultiLanguageContents
-    var description: MultiLanguageContents
-    var banner: MultiLanguageContents
-    var endAt: String
+    public var id: Int
+    public var name: MultiLanguageContents
+    public var nameFull: MultiLanguageContents
+    public var description: MultiLanguageContents
+    public var banner: MultiLanguageContents
+    public var endAt: String
 }

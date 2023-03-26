@@ -9,114 +9,119 @@ import Foundation
 
 // MARK: - SpiralAbyssDetail
 
-struct SpiralAbyssDetail: Codable {
-    struct CharacterRankModel: Codable {
+public struct SpiralAbyssDetail: Codable {
+    public struct CharacterRankModel: Codable {
         /// 角色ID
-        var avatarId: Int
+        public var avatarId: Int
         /// 排名对应的值
-        var value: Int
+        public var value: Int
         /// 角色头像
-        var avatarIcon: String
+        public var avatarIcon: String
         /// 角色星级（4/5）
-        var rarity: Int
+        public var rarity: Int
     }
 
-    struct Floor: Codable {
-        struct Level: Codable {
-            struct Battle: Codable {
-                struct Avatar: Codable {
+    public struct Floor: Codable {
+        public struct Level: Codable {
+            public struct Battle: Codable {
+                public struct Avatar: Codable {
                     /// 角色ID
-                    var id: Int
+                    public var id: Int
                     /// 角色头像
-                    var icon: String
+                    public var icon: String
                     /// 角色等级
-                    var level: Int
+                    public var level: Int
                     /// 角色星级
-                    var rarity: Int
+                    public var rarity: Int
                 }
 
                 /// 半间序数，1为上半，2为下半
-                var index: Int
+                public var index: Int
                 /// 出战角色
-                var avatars: [Avatar]
+                public var avatars: [Avatar]
                 /// 完成时间戳since1970
-                var timestamp: String
+                public var timestamp: String
             }
 
             /// 本间星数
-            var star: Int
+            public var star: Int
             /// 本间满星数（3）
-            var maxStar: Int
+            public var maxStar: Int
             /// 上半间与下半间
-            var battles: [Battle]
+            public var battles: [Battle]
             /// 本间序数，第几件
-            var index: Int
+            public var index: Int
         }
 
         /// 是否解锁
-        var isUnlock: Bool
+        public var isUnlock: Bool
         /// ？
-        var settleTime: String
+        public var settleTime: String
         /// 本层星数
-        var star: Int
+        public var star: Int
         /// 各间数据
-        var levels: [Level]
+        public var levels: [Level]
         /// 满星数（=9）
-        var maxStar: Int
+        public var maxStar: Int
         /// 废弃
-        var icon: String
+        public var icon: String
         /// 第几层，楼层序数（9,10,11,12）
-        var index: Int
+        public var index: Int
 
         /// 是否满星
-        var gainAllStar: Bool {
+        public var gainAllStar: Bool {
             star == maxStar
         }
     }
 
     /// 元素爆发排名（只有第一个）
-    var energySkillRank: [CharacterRankModel]
+    public var energySkillRank: [CharacterRankModel]
     /// 本期深渊开始时间
-    var startTime: String
+    public var startTime: String
     /// 总胜利次数
-    var totalWinTimes: Int
+    public var totalWinTimes: Int
     /// 到达最高层间数（最深抵达），eg "12-3"
-    var maxFloor: String
+    public var maxFloor: String
     /// 各楼层数据
-    var floors: [Floor]
+    public var floors: [Floor]
     /// 总挑战次数
-    var totalBattleTimes: Int
+    public var totalBattleTimes: Int
     /// 最高承受伤害排名（只有最高）
-    var takeDamageRank: [CharacterRankModel]
+    public var takeDamageRank: [CharacterRankModel]
     /// 是否解锁深渊
-    var isUnlock: Bool
+    public var isUnlock: Bool
     /// 最多击败敌人数量排名（只有最高
-    var defeatRank: [CharacterRankModel]
+    public var defeatRank: [CharacterRankModel]
     /// 本期深渊结束时间
-    var endTime: String
+    public var endTime: String
     /// 元素战记伤害排名（只有最高）
-    var normalSkillRank: [CharacterRankModel]
+    public var normalSkillRank: [CharacterRankModel]
     /// 元素战记伤害排名（只有最高）
-    var damageRank: [CharacterRankModel]
+    public var damageRank: [CharacterRankModel]
     /// 深渊期数ID，每期+1
-    var scheduleId: Int
+    public var scheduleId: Int
     /// 出站次数
-    var revealRank: [CharacterRankModel]
-    var totalStar: Int
+    public var revealRank: [CharacterRankModel]
+    public var totalStar: Int
 }
 
 // MARK: - AccountSpiralAbyssDetail
 
-struct AccountSpiralAbyssDetail {
-    enum WhichSeason {
+public struct AccountSpiralAbyssDetail {
+    public init(this: SpiralAbyssDetail, last: SpiralAbyssDetail) {
+        self.this = this
+        self.last = last
+    }
+
+    public enum WhichSeason {
         case this
         case last
     }
 
-    let this: SpiralAbyssDetail
-    let last: SpiralAbyssDetail
+    public let this: SpiralAbyssDetail
+    public let last: SpiralAbyssDetail
 
-    func get(_ whichSeason: WhichSeason) -> SpiralAbyssDetail {
+    public func get(_ whichSeason: WhichSeason) -> SpiralAbyssDetail {
         switch whichSeason {
         case .this:
             return this

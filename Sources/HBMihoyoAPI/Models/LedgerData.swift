@@ -7,52 +7,52 @@
 
 import Foundation
 
-struct LedgerData: Codable {
-    struct MonthData: Codable {
-        struct LedgerDataGroup: Codable {
-            var percent: Int
-            var num: Int
-            var actionId: Int
-            var action: String
+public struct LedgerData: Codable {
+    public struct MonthData: Codable {
+        public struct LedgerDataGroup: Codable {
+            public var percent: Int
+            public var num: Int
+            public var actionId: Int
+            public var action: String
         }
 
-        var currentPrimogems: Int
+        public var currentPrimogems: Int
         /// 国际服没有
-        var currentPrimogemsLevel: Int?
-        var lastMora: Int
+        public var currentPrimogemsLevel: Int?
+        public var lastMora: Int
         /// 国服使用
-        var primogemsRate: Int?
+        public var primogemsRate: Int?
         /// 国际服使用
-        var primogemRate: Int?
-        var moraRate: Int
-        var groupBy: [LedgerDataGroup]
-        var lastPrimogems: Int
-        var currentMora: Int
+        public var primogemRate: Int?
+        public var moraRate: Int
+        public var groupBy: [LedgerDataGroup]
+        public var lastPrimogems: Int
+        public var currentMora: Int
     }
 
-    struct DayData: Codable {
-        var currentMora: Int
+    public struct DayData: Codable {
+        public var currentMora: Int
         /// 国际服没有
-        var lastPrimogems: Int?
+        public var lastPrimogems: Int?
         /// 国际服没有
-        var lastMora: Int?
-        var currentPrimogems: Int
+        public var lastMora: Int?
+        public var currentPrimogems: Int
     }
 
-    var uid: Int
-    var monthData: MonthData
-    var dataMonth: Int
+    public var uid: Int
+    public var monthData: MonthData
+    public var dataMonth: Int
     /// 国际服没有
-    var date: String?
+    public var date: String?
     /// 国际服没有
-    var dataLastMonth: Int?
-    var region: String
-    var optionalMonth: [Int]
-    var month: Int
-    var nickname: String
+    public var dataLastMonth: Int?
+    public var region: String
+    public var optionalMonth: [Int]
+    public var month: Int
+    public var nickname: String
     /// 国际服没有
-    var accountId: Int?
+    public var accountId: Int?
     /// 国际服没有
-    var lantern: Bool?
-    var dayData: DayData
+    public var lantern: Bool?
+    public var dayData: DayData
 }

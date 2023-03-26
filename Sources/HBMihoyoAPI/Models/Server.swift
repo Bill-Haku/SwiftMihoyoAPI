@@ -10,7 +10,7 @@ import Foundation
 // MARK: - Server
 
 // 服务器类型
-enum Server: String, CaseIterable, Identifiable {
+public enum Server: String, CaseIterable, Identifiable {
     case china = "天空岛"
     case bilibili = "世界树"
     case us = "America"
@@ -20,7 +20,7 @@ enum Server: String, CaseIterable, Identifiable {
 
     // MARK: Internal
 
-    var id: String {
+    public var id: String {
         switch self {
         case .china:
             return "cn_gf01"
@@ -37,7 +37,7 @@ enum Server: String, CaseIterable, Identifiable {
         }
     }
 
-    var region: Region {
+    public var region: Region {
         switch self {
         case .bilibili, .china:
             return .cn
@@ -46,7 +46,7 @@ enum Server: String, CaseIterable, Identifiable {
         }
     }
 
-    static func id(_ id: String) -> Self {
+    public static func id(_ id: String) -> Self {
         switch id {
         case "cn_gf01":
             return .china
@@ -65,7 +65,7 @@ enum Server: String, CaseIterable, Identifiable {
         }
     }
 
-    func timeZone() -> TimeZone {
+    public func timeZone() -> TimeZone {
         switch self {
         case .asia, .bilibili, .china, .cht:
             return .init(secondsFromGMT: 8 * 60 * 60) ?? .current
@@ -84,7 +84,7 @@ extension Server: RawRepresentable {}
 // MARK: - Region
 
 // 地区类型，用于区分请求的Host URL
-enum Region: Identifiable {
+public enum Region: Identifiable {
     // 国服，含官服和B服
     case cn
     // 国际服
@@ -92,11 +92,11 @@ enum Region: Identifiable {
 
     // MARK: Internal
 
-    var id: Int {
+    public var id: Int {
         hashValue
     }
 
-    var value: String {
+    public var value: String {
         switch self {
         case .cn:
             return "中国大陆"

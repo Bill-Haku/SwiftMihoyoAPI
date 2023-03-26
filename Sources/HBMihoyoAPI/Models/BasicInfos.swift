@@ -7,76 +7,76 @@
 
 import Foundation
 
-struct BasicInfos: Codable {
-    struct Stats: Codable {
+public struct BasicInfos: Codable {
+    public struct Stats: Codable {
         /// 解锁角色数
-        var avatarNumber: Int
+        public var avatarNumber: Int
         /// 精致宝箱数
-        var exquisiteChestNumber: Int
+        public var exquisiteChestNumber: Int
         /// 普通宝箱数
-        var commonChestNumber: Int
+        public var commonChestNumber: Int
         /// 解锁传送点数量
-        var wayPointNumber: Int
+        public var wayPointNumber: Int
         /// 岩神瞳
-        var geoculusNumber: Int
+        public var geoculusNumber: Int
         /// 草神瞳
-        var dendroculusNumber: Int
+        public var dendroculusNumber: Int
         /// 解锁成就数
-        var achievementNumber: Int
+        public var achievementNumber: Int
         /// 解锁秘境数量
-        var domainNumber: Int
+        public var domainNumber: Int
         /// 活跃天数
-        var activeDayNumber: Int
+        public var activeDayNumber: Int
         /// 风神瞳
-        var anemoculusNumber: Int
+        public var anemoculusNumber: Int
         /// 华丽宝箱数
-        var luxuriousChestNumber: Int
+        public var luxuriousChestNumber: Int
         /// 雷神瞳
-        var electroculusNumber: Int
+        public var electroculusNumber: Int
         /// 珍贵宝箱数
-        var preciousChestNumber: Int
+        public var preciousChestNumber: Int
         /// 深境螺旋
-        var spiralAbyss: String
+        public var spiralAbyss: String
         /// 奇馈宝箱数
-        var magicChestNumber: Int
+        public var magicChestNumber: Int
     }
 
-    struct WorldExploration: Codable {
-        struct Offering: Codable {
-            var name: String
-            var level: Int
-            var icon: String
+    public struct WorldExploration: Codable {
+        public struct Offering: Codable {
+            public var name: String
+            public var level: Int
+            public var icon: String
         }
 
-        var id: Int
-        var backgroundImage: String
-        var mapUrl: String
-        var parentId: Int
-        var type: String
-        var offerings: [Offering]
-        var level: Int
-        var explorationPercentage: Int
-        var icon: String
-        var innerIcon: String
-        var cover: String
-        var name: String
-        var strategyUrl: String
+        public var id: Int
+        public var backgroundImage: String
+        public var mapUrl: String
+        public var parentId: Int
+        public var type: String
+        public var offerings: [Offering]
+        public var level: Int
+        public var explorationPercentage: Int
+        public var icon: String
+        public var innerIcon: String
+        public var cover: String
+        public var name: String
+        public var strategyUrl: String
     }
 
-    struct Avatar: Codable, Identifiable {
-        var fetter: Int
-        var rarity: Int
-        var cardImage: String
-        var id: Int
-        var isChosen: Bool
-        var element: String
-        var image: String
-        var level: Int
-        var name: String
-        var activedConstellationNum: Int
+    public struct Avatar: Codable, Identifiable {
+        public var fetter: Int
+        public var rarity: Int
+        public var cardImage: String
+        public var id: Int
+        public var isChosen: Bool
+        public var element: String
+        public var image: String
+        public var level: Int
+        public var name: String
+        public var activedConstellationNum: Int
     }
 
-    var stats: Stats
-    var worldExplorations: [WorldExploration]
-    var avatars: [Avatar]
+    public var stats: Stats
+    public var worldExplorations: [WorldExploration]
+    public var avatars: [Avatar]
 }

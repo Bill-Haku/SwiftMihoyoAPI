@@ -7,72 +7,72 @@
 
 import Foundation
 
-struct AllAvatarDetailModel: Codable {
-    struct Avatar: Codable, Equatable {
-        struct Costume: Codable {
-            var id: Int
-            var name: String
-            var icon: String
+public struct AllAvatarDetailModel: Codable {
+    public struct Avatar: Codable, Equatable {
+        public struct Costume: Codable {
+            public var id: Int
+            public var name: String
+            public var icon: String
         }
 
-        struct Reliquary: Codable {
-            struct Set: Codable {
-                struct Affix: Codable {
-                    var activationNumber: Int
-                    var effect: String
+        public struct Reliquary: Codable {
+            public struct Set: Codable {
+                public struct Affix: Codable {
+                    public var activationNumber: Int
+                    public var effect: String
                 }
 
-                var id: Int
-                var name: String
-                var affixes: [Affix]
+                public var id: Int
+                public var name: String
+                public var affixes: [Affix]
             }
 
-            var pos: Int
-            var rarity: Int
-            var set: Set
-            var id: Int
-            var posName: String
-            var level: Int
-            var name: String
-            var icon: String
+            public var pos: Int
+            public var rarity: Int
+            public var set: Set
+            public var id: Int
+            public var posName: String
+            public var level: Int
+            public var name: String
+            public var icon: String
         }
 
-        struct Weapon: Codable {
-            var rarity: Int
-            var icon: String
-            var id: Int
-            var typeName: String
-            var level: Int
-            var affixLevel: Int
-            var type: Int
-            var promoteLevel: Int
-            var desc: String
+        public struct Weapon: Codable {
+            public var rarity: Int
+            public var icon: String
+            public var id: Int
+            public var typeName: String
+            public var level: Int
+            public var affixLevel: Int
+            public var type: Int
+            public var promoteLevel: Int
+            public var desc: String
         }
 
-        struct Constellation: Codable {
-            var effect: String
-            var id: Int
-            var icon: String
-            var name: String
-            var pos: Int
-            var isActived: Bool
+        public struct Constellation: Codable {
+            public var effect: String
+            public var id: Int
+            public var icon: String
+            public var name: String
+            public var pos: Int
+            public var isActived: Bool
         }
 
-        var id: Int
-        var element: String
-        var costumes: [Costume]
-        var reliquaries: [Reliquary]
-        var level: Int
-        var image: String
-        var icon: String
-        var weapon: Weapon
-        var fetter: Int
-        var constellations: [Constellation]
-        var activedConstellationNum: Int
-        var name: String
-        var rarity: Int
+        public var id: Int
+        public var element: String
+        public var costumes: [Costume]
+        public var reliquaries: [Reliquary]
+        public var level: Int
+        public var image: String
+        public var icon: String
+        public var weapon: Weapon
+        public var fetter: Int
+        public var constellations: [Constellation]
+        public var activedConstellationNum: Int
+        public var name: String
+        public var rarity: Int
 
-        static func == (
+        public static func == (
             lhs: AllAvatarDetailModel.Avatar,
             rhs: AllAvatarDetailModel.Avatar
         )
@@ -81,5 +81,5 @@ struct AllAvatarDetailModel: Codable {
         }
     }
 
-    var avatars: [Avatar]
+    public var avatars: [Avatar]
 }

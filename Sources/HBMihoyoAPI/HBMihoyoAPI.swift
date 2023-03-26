@@ -1,7 +1,7 @@
 import Foundation
 
 @available(iOS 13, watchOS 6, *)
-public class MihoyoAPI {
+public enum MihoyoAPI {
     /// 获取信息
     /// - Parameters:
     ///     - region: 服务器地区
@@ -9,7 +9,7 @@ public class MihoyoAPI {
     ///     - uid: 用户UID
     ///     - cookie: 用户Cookie
     ///     - completion: 数据
-    static func fetchInfos(
+    public static func fetchInfos(
         region: Region,
         serverID: String,
         uid: String,
@@ -100,7 +100,7 @@ public class MihoyoAPI {
     ///     - uid: 用户UID
     ///     - cookie: 用户Cookie
     ///     - completion: 数据
-    static func getMultiTokenByLoginTicket(
+    public static func getMultiTokenByLoginTicket(
         loginTicket: String,
         loginUid: String,
         completion: @escaping (
@@ -181,7 +181,7 @@ public class MihoyoAPI {
     ///     - uid: 用户UID
     ///     - cookie: 用户Cookie
     ///     - completion: 数据
-    static func fetchSimplifiedInfos(
+    public static func fetchSimplifiedInfos(
         cookie: String,
         completion: @escaping (
             SimplifiedUserDataResult
@@ -206,7 +206,8 @@ public class MihoyoAPI {
                     case 0:
                         print("get data succeed")
                         if let simplifiedUserData =
-                            SimplifiedUserData(widgetUserData: userData!) {
+                            SimplifiedUserData(widgetUserData: userData!)
+                        {
                             completion(.success(simplifiedUserData))
                         } else {
                             completion(.failure(.decodeError("解码错误")))
@@ -262,7 +263,7 @@ public class MihoyoAPI {
     ///     - uid: 用户UID
     ///     - cookie: 用户Cookie
     ///     - completion: 数据
-    static func fetchAllAvatarInfos(
+    public static func fetchAllAvatarInfos(
         region: Region,
         serverID: String,
         uid: String,
@@ -390,7 +391,7 @@ public class MihoyoAPI {
     ///     - completion: 数据
     ///
     /// 只需要Cookie和服务器地区即可返回游戏内的帐号信息等。使用时不知为何需要先随便发送一个请求。
-    static func getUserGameRolesByCookie(
+    public static func getUserGameRolesByCookie(
         _ cookie: String,
         _ region: Region,
         completion: @escaping (
@@ -566,7 +567,7 @@ public class MihoyoAPI {
     ///     - uid: 用户UID
     ///     - cookie: 用户Cookie
     ///     - completion: 数据
-    static func fetchBasicInfos(
+    public static func fetchBasicInfos(
         region: Region,
         serverID: String,
         uid: String,
@@ -663,7 +664,7 @@ public class MihoyoAPI {
     ///     - region: 服务器地区
     ///     - cookie: 用户Cookie
     ///     - completion: 数据
-    static func fetchLedgerInfos(
+    public static func fetchLedgerInfos(
         month: Int,
         uid: String,
         serverID: String,
@@ -767,7 +768,7 @@ public class MihoyoAPI {
         ///     - uid: 用户UID
         ///     - cookie: 用户Cookie
         ///     - completion: 数据
-        static func fetchSpiralAbyssInfos(
+        public static func fetchSpiralAbyssInfos(
             region: Region,
             serverID: String,
             uid: String,

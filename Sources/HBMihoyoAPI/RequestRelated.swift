@@ -7,11 +7,11 @@
 
 import Foundation
 
-typealias FetchResult = Result<UserData, FetchError>
-typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
-typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
-typealias LedgerDataFetchResult = Result<LedgerData, FetchError>
-typealias AllAvatarDetailFetchResult = Result<AllAvatarDetailModel, FetchError>
+public typealias FetchResult = Result<UserData, FetchError>
+public typealias BasicInfoFetchResult = Result<BasicInfos, FetchError>
+public typealias CurrentEventsFetchResult = Result<CurrentEvent, FetchError>
+public typealias LedgerDataFetchResult = Result<LedgerData, FetchError>
+public typealias AllAvatarDetailFetchResult = Result<AllAvatarDetailModel, FetchError>
 
 #if !os(watchOS)
 //    typealias PlayerDetailsFetchResult = Result<
@@ -22,19 +22,19 @@ typealias AllAvatarDetailFetchResult = Result<AllAvatarDetailModel, FetchError>
 //        PlayerDetail,
 //        PlayerDetail.PlayerDetailError
 //    >
-    typealias SpiralAbyssDetailFetchResult = Result<
+    public typealias SpiralAbyssDetailFetchResult = Result<
         SpiralAbyssDetail,
         FetchError
     >
 #endif
 
-extension FetchResult {
+public extension FetchResult {
     static let defaultFetchResult: FetchResult = .success(UserData.defaultData)
 }
 
 // MARK: - RequestResult
 
-struct RequestResult: Codable {
+public struct RequestResult: Codable {
     let data: FetchData?
     let message: String
     let retcode: Int
@@ -42,7 +42,7 @@ struct RequestResult: Codable {
 
 // MARK: - WidgetRequestResult
 
-struct WidgetRequestResult: Codable {
+public struct WidgetRequestResult: Codable {
     let data: WidgetUserData?
     let message: String
     let retcode: Int
@@ -50,7 +50,7 @@ struct WidgetRequestResult: Codable {
 
 // MARK: - BasicInfoRequestResult
 
-struct BasicInfoRequestResult: Codable {
+public struct BasicInfoRequestResult: Codable {
     let data: BasicInfos?
     let message: String
     let retcode: Int
@@ -58,7 +58,7 @@ struct BasicInfoRequestResult: Codable {
 
 // MARK: - LedgerDataRequestResult
 
-struct LedgerDataRequestResult: Codable {
+public struct LedgerDataRequestResult: Codable {
     let data: LedgerData?
     let message: String
     let retcode: Int
@@ -66,14 +66,14 @@ struct LedgerDataRequestResult: Codable {
 
 // MARK: - AllAvatarDetailRequestDetail
 
-struct AllAvatarDetailRequestDetail: Codable {
+public struct AllAvatarDetailRequestDetail: Codable {
     let data: AllAvatarDetailModel?
     let message: String
     let retcode: Int
 }
 
 #if !os(watchOS)
-    struct SpiralAbyssDetailRequestResult: Codable {
+public struct SpiralAbyssDetailRequestResult: Codable {
         let data: SpiralAbyssDetail?
         let message: String
         let retcode: Int
@@ -83,7 +83,7 @@ struct AllAvatarDetailRequestDetail: Codable {
 
 // MARK: - RequestError
 
-enum RequestError: Error {
+public enum RequestError: Error {
     case dataTaskError(String)
     case noResponseData
     case responseError
@@ -93,14 +93,14 @@ enum RequestError: Error {
 
 // MARK: - ErrorCode
 
-struct ErrorCode: Codable {
+public struct ErrorCode: Codable {
     var code: Int
     var message: String?
 }
 
 // MARK: - FetchError
 
-enum FetchError: Error, Equatable {
+public enum FetchError: Error, Equatable {
     case noFetchInfo
 
     case cookieInvalid(Int, String) // 10001
@@ -128,20 +128,20 @@ enum FetchError: Error, Equatable {
 
     // MARK: Internal
 
-    static func == (lhs: FetchError, rhs: FetchError) -> Bool {
+    public static func == (lhs: FetchError, rhs: FetchError) -> Bool {
         lhs.description == rhs.description && lhs.message == rhs.message
     }
 }
 
 // MARK: - PSAServerError
 
-enum PSAServerError: Error {
+public enum PSAServerError: Error {
     case uploadError(String)
     case getDataError(String)
 }
 
-extension FetchError {
-    var description: String {
+public extension FetchError {
+    public var description: String {
         switch self {
         case .defaultStatus:
             return "请先刷新以获取树脂状态".localized
@@ -195,7 +195,7 @@ extension FetchError {
         }
     }
 
-    var message: String {
+    public var message: String {
         switch self {
         case .defaultStatus:
             return ""
@@ -239,29 +239,29 @@ extension FetchError {
 
 // MARK: - MultiTokenResult
 
-struct MultiTokenResult: Codable {
-    let retcode: Int
-    let message: String
-    let data: MultiToken?
+public struct MultiTokenResult: Codable {
+    public let retcode: Int
+    public let message: String
+    public let data: MultiToken?
 }
 
 // MARK: - MultiToken
 
-struct MultiToken: Codable {
-    struct Item: Codable {
-        let name: String
-        let token: String
+public struct MultiToken: Codable {
+    public struct Item: Codable {
+        public let name: String
+        public let token: String
     }
 
-    var list: [Item]
+    public var list: [Item]
 
-    var stoken: String {
+    public var stoken: String {
         list.first { item in
             item.name == "stoken"
         }?.token ?? ""
     }
 
-    var ltoken: String {
+    public var ltoken: String {
         list.first { item in
             item.name == "ltoken"
         }?.token ?? ""
@@ -270,29 +270,29 @@ struct MultiToken: Codable {
 
 // MARK: - RequestAccountListResult
 
-struct RequestAccountListResult: Codable {
-    let retcode: Int
-    let message: String
-    let data: AccountListData?
+public struct RequestAccountListResult: Codable {
+    public let retcode: Int
+    public let message: String
+    public let data: AccountListData?
 }
 
 // MARK: - AccountListData
 
-struct AccountListData: Codable {
-    let list: [FetchedAccount]
+public struct AccountListData: Codable {
+    public let list: [FetchedAccount]
 }
 
 // MARK: - FetchedAccount
 
-struct FetchedAccount: Codable, Hashable, Identifiable {
-    let region: String
-    let gameBiz: String
-    let nickname: String
-    let level: Int
-    let isOfficial: Bool
-    let regionName: String
-    let gameUid: String
-    let isChosen: Bool
+public struct FetchedAccount: Codable, Hashable, Identifiable {
+    public let region: String
+    public let gameBiz: String
+    public let nickname: String
+    public let level: Int
+    public let isOfficial: Bool
+    public let regionName: String
+    public let gameUid: String
+    public let isChosen: Bool
 
-    var id: String { gameUid }
+    public var id: String { gameUid }
 }
